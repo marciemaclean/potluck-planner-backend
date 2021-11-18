@@ -1,0 +1,42 @@
+{
+  "name": "bcryptjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex-cleaner": "^1.3.1",
+    "knex": "^0.95.14",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.2.0",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "migrateh": "heroku run knex migrate:latest -a potluckplanner3",
+    "rollbackh": "heroku run knex migrate:rollback -a potluckplanner3 ",
+    "databaseh": "heroku pg:psql -a potluckplanner3 ",
+    "seedh": "heroku run knex seed:run -a potluckplanner3 ",
+    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
+    "deploy": "git push heroku main",
+    "resetdb": "npm run rollback && npm run migrate && npm run seed",
+    "resethdb": "npm run rollbackh && npm run migrateh && npm run seedh"
+  },
+  "author": "",
+  "license": "ISC"
+}
